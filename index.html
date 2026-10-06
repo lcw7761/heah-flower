@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>헤아 꽃집 | 청주 동네 꽃집</title>
+<meta name="description" content="청주의 작은 꽃집, 헤아 꽃집입니다. 기념일 꽃다발, 부모님 선물, 개업 화분을 정성껏 준비합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #13315C;
+    --blue: #2366C9;
+    --orange: #F28C28;
+    --orange-soft: #FCE3CC;
+    --cream: #FFF9F2;
+    --white: #FFFFFF;
+    --text: #2B3A55;
+    --muted: #5B6B85;
+    --line: #EADBC8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--cream);
+    word-break: keep-all;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* 상단 메뉴 */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { font-size: 28px; font-weight: 800; color: var(--navy); text-decoration: none; }
+  .logo span { color: var(--orange); }
+  .menu { display: flex; gap: 28px; list-style: none; }
+  .menu a { text-decoration: none; font-size: 19px; font-weight: 500; color: var(--navy); }
+  .menu a:hover { color: var(--orange); }
+
+  /* 버튼 */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 64px; padding: 0 32px;
+    font-size: 22px; font-weight: 700;
+    border-radius: 999px; text-decoration: none;
+    transition: transform .15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-main { background: var(--orange); color: var(--navy); box-shadow: 0 6px 16px rgba(242,140,40,.35); }
+  .btn-sub { background: var(--white); color: var(--navy); border: 2px solid var(--navy); }
+
+  /* 첫 화면 */
+  .hero { background: linear-gradient(160deg, var(--orange-soft), var(--cream)); padding: 80px 0 88px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
+  .eyebrow { font-size: 20px; font-weight: 700; color: #B35409; margin-bottom: 12px; }
+  .hero h1 { font-size: 52px; line-height: 1.3; font-weight: 800; color: var(--navy); margin-bottom: 20px; }
+  .hero p.lead { font-size: 22px; color: var(--muted); margin-bottom: 36px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 16px; }
+  .hero-art { display: flex; justify-content: center; }
+  .hero-art svg { width: 100%; max-width: 380px; height: auto; }
+
+  /* 공통 섹션 */
+  section { padding: 88px 0; }
+  .sec-title { text-align: center; margin-bottom: 48px; }
+  .sec-title .eyebrow { margin-bottom: 8px; }
+  .sec-title h2 { font-size: 38px; font-weight: 800; color: var(--navy); }
+  .alt { background: var(--white); }
+
+  /* 가게 소개 */
+  .about { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .about-card { background: var(--white); border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px; }
+  .about-card .icon { font-size: 40px; margin-bottom: 12px; }
+  .about-card h3 { font-size: 24px; color: var(--navy); margin-bottom: 8px; }
+  .about-card p { color: var(--muted); }
+
+  /* 대표 상품 */
+  .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .product { background: var(--cream); border-radius: 20px; overflow: hidden; border: 1px solid var(--line); }
+  .product .thumb { height: 200px; display: flex; align-items: center; justify-content: center; }
+  .product .thumb svg { width: 150px; height: 150px; }
+  .product .body { padding: 24px 28px 28px; }
+  .product h3 { font-size: 26px; color: var(--navy); margin-bottom: 6px; }
+  .product p { color: var(--muted); margin-bottom: 14px; }
+  .price { display: inline-block; font-weight: 700; color: var(--navy); background: var(--orange-soft); padding: 6px 16px; border-radius: 999px; }
+  .note { text-align: center; color: var(--muted); font-size: 18px; margin-top: 28px; }
+
+  /* 예약 방법 */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; counter-reset: step; }
+  .step { background: var(--white); border-radius: 20px; padding: 32px 28px; border: 1px solid var(--line); position: relative; }
+  .step .num {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--blue); color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: 800; margin-bottom: 16px;
+  }
+  .step h3 { font-size: 24px; color: var(--navy); margin-bottom: 6px; }
+  .step p { color: var(--muted); }
+
+  /* 오시는 길 */
+  .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .info { background: var(--cream); border-radius: 20px; padding: 36px; border: 1px solid var(--line); }
+  .info dl { display: grid; grid-template-columns: 110px 1fr; row-gap: 18px; }
+  .info dt { font-weight: 700; color: var(--blue); }
+  .info dd { color: var(--navy); font-weight: 500; }
+  .map {
+    border-radius: 20px; background: #E1EBF8; border: 2px dashed #9DB6DA;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 16px; padding: 36px; text-align: center; color: var(--navy); min-height: 280px;
+  }
+
+  /* 문의하기 */
+  .contact { background: var(--navy); color: var(--white); text-align: center; }
+  .contact h2 { font-size: 40px; font-weight: 800; margin-bottom: 12px; }
+  .contact p { font-size: 22px; color: #C9D9F0; margin-bottom: 36px; }
+  .contact .actions { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+  .contact .btn-sub { background: transparent; color: var(--white); border-color: var(--white); }
+
+  footer { background: #0E2547; color: #9DB0CC; text-align: center; padding: 28px 24px 110px; font-size: 16px; }
+
+  /* 휴대폰 하단 고정 전화 버튼 */
+  .call-bar { display: none; }
+
+  /* 반응형: 태블릿·휴대폰 */
+  @media (max-width: 860px) {
+    body { font-size: 19px; }
+    .menu { display: none; }
+    .hero { padding: 48px 0 56px; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 24px; }
+    .hero-art { order: -1; }
+    .hero-art svg { max-width: 240px; }
+    .hero h1 { font-size: 38px; }
+    .hero .actions .btn { flex: 1 1 100%; }
+    section { padding: 64px 0; }
+    .sec-title h2 { font-size: 32px; }
+    .about, .products, .steps, .visit { grid-template-columns: 1fr; }
+    .info dl { grid-template-columns: 90px 1fr; }
+    .contact h2 { font-size: 32px; }
+    .contact .actions .btn { flex: 1 1 100%; }
+    .call-bar {
+      display: flex; position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 20;
+    }
+    .call-bar .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">헤아 <span>꽃집</span></a>
+    <ul class="menu">
+      <li><a href="#about">가게 소개</a></li>
+      <li><a href="#products">대표 상품</a></li>
+      <li><a href="#reserve">예약 방법</a></li>
+      <li><a href="#visit">오시는 길</a></li>
+      <li><a href="#contact">문의하기</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 첫 화면 -->
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">청주의 작은 동네 꽃집</p>
+        <h1>마음을 헤아려<br>꽃 한 다발에 담습니다</h1>
+        <p class="lead">기념일 꽃다발, 부모님 선물, 개업 화분까지<br>전하고 싶은 마음을 듣고 정성껏 준비합니다.</p>
+        <div class="actions">
+          <a href="tel:010-0000-0000" class="btn btn-main">📞 전화로 문의하기</a>
+          <a href="#products" class="btn btn-sub">대표 상품 보기</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="150" cy="150" r="140" fill="#FFFFFF" opacity=".7"/>
+          <path d="M150 170 L110 270 H190 Z" fill="#2366C9"/>
+          <path d="M110 270 H190 L180 285 H120 Z" fill="#13315C"/>
+          <path d="M150 175 Q120 140 95 150" stroke="#5E8C4A" stroke-width="6" fill="none"/>
+          <path d="M150 175 Q180 140 205 150" stroke="#5E8C4A" stroke-width="6" fill="none"/>
+          <path d="M150 175 V115" stroke="#5E8C4A" stroke-width="6"/>
+          <g fill="#F28C28"><circle cx="150" cy="95" r="18"/><circle cx="132" cy="108" r="18"/><circle cx="168" cy="108" r="18"/><circle cx="140" cy="128" r="18"/><circle cx="160" cy="128" r="18"/></g>
+          <circle cx="150" cy="113" r="12" fill="#FCE3CC"/>
+          <g fill="#E86A5A"><circle cx="95" cy="140" r="14"/><circle cx="83" cy="152" r="14"/><circle cx="105" cy="155" r="14"/></g>
+          <circle cx="95" cy="150" r="8" fill="#FFE2D6"/>
+          <g fill="#F6B26B"><circle cx="205" cy="140" r="14"/><circle cx="217" cy="152" r="14"/><circle cx="195" cy="155" r="14"/></g>
+          <circle cx="205" cy="150" r="8" fill="#FFF1DC"/>
+          <path d="M136 205 Q150 195 164 205 Q150 215 136 205Z" fill="#F28C28"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 가게 소개 -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-title">
+        <p class="eyebrow">가게 소개</p>
+        <h2>헤아 꽃집은 이런 곳입니다</h2>
+      </div>
+      <div class="about">
+        <div class="about-card">
+          <div class="icon">💬</div>
+          <h3>먼저 여쭤봅니다</h3>
+          <p>누구에게, 어떤 마음을 전하고 싶은지 듣고 어울리는 꽃을 함께 고릅니다.</p>
+        </div>
+        <div class="about-card">
+          <div class="icon">🌷</div>
+          <h3>그날의 꽃으로</h3>
+          <p>들어온 꽃의 상태를 직접 확인하고, 그날 가장 좋은 꽃으로 준비합니다.</p>
+        </div>
+        <div class="about-card">
+          <div class="icon">🏡</div>
+          <h3>동네 꽃집답게</h3>
+          <p>부담 없이 들러 상담하실 수 있는 편안한 동네 꽃집입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 대표 상품 -->
+  <section id="products" class="alt">
+    <div class="wrap">
+      <div class="sec-title">
+        <p class="eyebrow">대표 상품</p>
+        <h2>이런 꽃을 준비해 드려요</h2>
+      </div>
+      <div class="products">
+        <div class="product">
+          <div class="thumb" style="background:#FCE3CC" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><path d="M50 55 L35 92 H65 Z" fill="#2366C9"/><g fill="#E86A5A"><circle cx="50" cy="32" r="10"/><circle cx="38" cy="40" r="10"/><circle cx="62" cy="40" r="10"/><circle cx="44" cy="52" r="10"/><circle cx="56" cy="52" r="10"/></g><circle cx="50" cy="44" r="7" fill="#FFE2D6"/></svg>
+          </div>
+          <div class="body">
+            <h3>기념일 꽃다발</h3>
+            <p>생일, 기념일, 졸업식에 마음을 전하는 꽃다발</p>
+            <span class="price">[00,000원부터]</span>
+          </div>
+        </div>
+        <div class="product">
+          <div class="thumb" style="background:#E1EBF8" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><rect x="30" y="60" width="40" height="30" rx="4" fill="#13315C"/><g fill="#F28C28"><circle cx="50" cy="32" r="10"/><circle cx="38" cy="42" r="10"/><circle cx="62" cy="42" r="10"/><circle cx="50" cy="52" r="10"/></g><circle cx="50" cy="42" r="7" fill="#FCE3CC"/></svg>
+          </div>
+          <div class="body">
+            <h3>부모님 선물</h3>
+            <p>어버이날, 생신에 드리기 좋은 꽃바구니와 꽃다발</p>
+            <span class="price">[00,000원부터]</span>
+          </div>
+        </div>
+        <div class="product">
+          <div class="thumb" style="background:#E6F1E1" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><path d="M30 62 H70 L64 92 H36 Z" fill="#F28C28"/><path d="M50 62 V20" stroke="#5E8C4A" stroke-width="4"/><g fill="#5E8C4A"><ellipse cx="38" cy="38" rx="12" ry="6" transform="rotate(-30 38 38)"/><ellipse cx="62" cy="34" rx="12" ry="6" transform="rotate(30 62 34)"/><ellipse cx="40" cy="54" rx="12" ry="6" transform="rotate(-20 40 54)"/><ellipse cx="60" cy="50" rx="12" ry="6" transform="rotate(20 60 50)"/></g></svg>
+          </div>
+          <div class="body">
+            <h3>개업 화분</h3>
+            <p>새 출발을 축하하는 관엽식물과 화분, 리본 문구 작성</p>
+            <span class="price">[00,000원부터]</span>
+          </div>
+        </div>
+      </div>
+      <p class="note">※ 가격은 꽃 종류와 크기에 따라 달라질 수 있어요. 전화로 편하게 물어보세요.</p>
+    </div>
+  </section>
+
+  <!-- 예약 방법 -->
+  <section id="reserve">
+    <div class="wrap">
+      <div class="sec-title">
+        <p class="eyebrow">예약 방법</p>
+        <h2>세 단계면 예약 끝</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>전화로 연락</h3>
+          <p>원하는 날짜와 용도, 예산을 알려 주세요.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>꽃 상담</h3>
+          <p>받는 분과 상황에 어울리는 꽃을 함께 정합니다.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>방문 수령</h3>
+          <p>약속한 시간에 가게에서 찾아가시면 됩니다.</p>
+        </div>
+      </div>
+      <p class="note">※ 꽃다발은 하루 전, 개업 화분은 2~3일 전 예약을 권해 드려요.</p>
+    </div>
+  </section>
+
+  <!-- 오시는 길 -->
+  <section id="visit" class="alt">
+    <div class="wrap">
+      <div class="sec-title">
+        <p class="eyebrow">오시는 길</p>
+        <h2>헤아 꽃집 찾아오기</h2>
+      </div>
+      <div class="visit">
+        <div class="info">
+          <dl>
+            <dt>주소</dt><dd>[충청북도 청주시 ○○구 ○○로 00]</dd>
+            <dt>영업시간</dt><dd>[매일 10:00 ~ 20:00]</dd>
+            <dt>휴무일</dt><dd>[매주 ○요일]</dd>
+            <dt>전화</dt><dd>[010-0000-0000]</dd>
+            <dt>주차</dt><dd>[주차 안내 입력]</dd>
+          </dl>
+        </div>
+        <div class="map">
+          <div style="font-size:48px">📍</div>
+          <p>지도 앱에서 위치를 확인하세요</p>
+          <a href="#" class="btn btn-sub">지도로 보기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 문의하기 -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>꽃 선물, 고민되시나요?</h2>
+      <p>전화 한 통이면 어울리는 꽃을 함께 찾아 드립니다.</p>
+      <div class="actions">
+        <a href="tel:010-0000-0000" class="btn btn-main">📞 전화 문의 [010-0000-0000]</a>
+        <a href="#" class="btn btn-sub">💬 카카오톡 문의</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 헤아 꽃집 · 사업자등록번호 [000-00-00000] · 대표 [이름]
+</footer>
+
+<div class="call-bar">
+  <a href="tel:010-0000-0000" class="btn btn-main">📞 지금 전화하기</a>
+</div>
+
+</body>
+</html>
